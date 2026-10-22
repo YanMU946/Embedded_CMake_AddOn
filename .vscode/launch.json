@@ -1,0 +1,80 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        // DAPLink
+        {
+            "name": "DAPlink",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            // "device": "STM32F407VE",
+            // "svdFile": "User_Debug/STM32F407.svd",
+            "device": "STM32H723VG",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "servertype": "openocd", 
+            "configFiles": [
+                "User_Debug/openocd.cfg", 
+            ],
+            "runToEntryPoint": "main", 
+            "rtos": "FreeRTOS",
+            "preLaunchTask": "CMake: build",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            }
+        },
+        // JLink
+        {
+            "name": "Jlink",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            // "device": "STM32F407VE",
+            "device": "STM32H723VG",
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "interface": "swd",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "rtos": "FreeRTOS",
+            "preLaunchTask": "CMake: build",
+            "liveWatch": {
+                "enabled": true,
+                "samplesPerSecond": 4
+            }
+        },
+        // DAPLink attach, not reset board
+        {
+            "name": "DAP-attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "attach",
+            "type": "cortex-debug",
+            // "device": "STM32F407VE",
+            // "svdFile": "User_Debug/STM32F407.svd",
+            "device": "STM32H723VG",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "servertype": "openocd",
+            "configFiles": [
+                "User_Debug/openocd.cfg",
+            ],
+        },
+        // JLink attach, not reset board
+        {
+            "name": "Jlink-attach",
+            "cwd": "${workspaceFolder}",
+            "executable": "${command:cmake.getLaunchTargetPath}",
+            "request": "attach",
+            "type": "cortex-debug",
+            // "device": "STM32F407VE",
+            "device": "STM32H723VG",
+            "showDevDebugOutput": "none",
+            "servertype": "jlink",
+            "interface": "swd",
+            "svdFile": "User_Debug/STM32H7x3.svd",
+            "rtos": "FreeRTOS",
+        },
+    ],
+}
