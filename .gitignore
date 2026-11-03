@@ -4,4 +4,8 @@ build/
 # Debug
 *.jdebug
 *jdebug*
+
+# Others
 .agents/
+.DS_Store
+Thumbs.db
