@@ -54,14 +54,9 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
     Middlewares/ST/ARM/DSP/Include
 )
 
-# Add user source files
-file(GLOB USER_SOURCES
-)
-
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     # Add user sources here
-    ${USER_SOURCES}
 )
 
 # Add include paths
